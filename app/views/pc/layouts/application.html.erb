@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CarMedia</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'pc/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'pc/application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-wrapp">
+        <h1><%= link_to "CAR STUDIO", categories_path %></h1>
+        <nav>
+          <% if user_signed_in? %>
+  <!--             Logged in as <strong><%= current_user.email %></strong>. -->
+            <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> |
+            <%= link_to "記事作成", new_article_path, data: {"turbolinks" => false} %>
+          <% else %>
+            <%= link_to "サインイン", new_user_registration_path %> |
+            <%= link_to "ログイン", new_user_session_path %>
+          <% end %>
+        </nav>
+      </div>
+    </header>
+    <div class="category-list">
+      <ul>
+        <% @category.each do |c| %>
+          <li><%= c.name %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <!-- <p class="notice"><%= notice %></p> -->
+    <!-- <p class="alert"><%= alert %></p> -->
+    <%= yield %>
+  </body>
+</html>
