@@ -1,0 +1,124 @@
+// Place all the styles related to the cars controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin h2(){
+  font-size: 25px;
+  font-weight: bold;
+  font-color: #696969;
+  color: #696969;
+}
+
+.car-search-area-title{
+  @include h2();
+  margin-top: 50px;
+}
+
+.car-search-list-title{
+  @include h2();
+  margin-top: 40px;
+}
+
+.car-search-area{
+  width: 100%;
+  height: 230px;
+  border: 2px solid #ccc;
+  margin-top: 20px;
+}
+
+.car-search-list{
+  width: 100%;
+  height: 80px;
+  border: 2px solid #ccc;
+  margin-top: 20px;
+}
+
+.car-area{
+  margin-top: 20px;
+  .car-contents{
+    overflow: hidden;
+    height: 240px;
+    border-top: 2px solid #ccc;
+    .car-contents-image{
+      padding-top: 20px;
+      float: left;
+      width: 27%;
+      height: 100%;
+      img{
+        width: 100%;
+        height: 180px;
+        border: 1px solid #ddd;
+      }
+    }
+    .car-contents-info{
+      float: right;
+      width: 70%;
+      height: 100%;
+      padding-top: 20px;
+      p{
+        margin: 0;
+        color: #696969;
+      }
+      .car-contents-info-top{
+        overflow: hidden;
+        .car-contents-info-name{
+          float: left;
+          width: 30%;
+          .car-contents-info-car-name{
+            font-size: 25px;
+          }
+        }
+        ul{
+          overflow: hidden;
+          padding: 0;
+          margin: 0;
+          float: right;
+          width: 70%;
+          li{
+            text-align: center;
+            float: right;
+            width: 100px;
+            list-style-type: none;
+          }
+        }
+      }
+      .car-contents-info-bottom{
+        overflow: hidden;
+        height: 100px;
+        margin-top: 60px;
+        ul{
+          overflow: hidden;
+          padding: 0;
+          margin: 0;
+          float: left;
+          width: 50%;
+          li{
+            float: left;
+            width: 130px;
+            list-style-type: none;
+            .car-contents-info-price{
+              font-size: 23px;
+            }
+            .right{
+              color: #FF8C00;
+            }
+          }
+        }
+        .car-contents-info-botton{
+          float: right;
+          width: 200px;
+          height:80px;
+          background: #FF8C00;
+          text-align: center;
+          padding: 10px 5px 0 5px;
+          a{
+            display: block;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

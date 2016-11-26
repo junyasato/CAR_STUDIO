@@ -1,0 +1,31 @@
+<div class="search-label">
+  <p>中古車を探す</p>
+</div>
+<div class="search-area">
+  <div class="search-top-area">
+    <div class="search-form">
+      <div class="search-form-top">
+        <p>条件から検索</p>
+      </div>
+      <div class="search-form-bottom">
+        <p>フリーワードで検索</p>
+      </div>
+    </div>
+    <div class="search-maker">
+      <p>メーカーから検索</p>
+      <ul>
+        <% maker.each do |m| %>
+          <li><%= link_to "#{m.name}", cars_path(maker_id: m.id) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="search-bottom-area">
+    <p>ボディタイプから検索</p>
+    <ul>
+      <% body_type.each do |b| %>
+        <li><%= link_to "#{b.name}", cars_path(body_type_id: b.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="wrapp">
+  <% if @makers %>
+    <h2 class="car-search-area-title"><%= @makers.name %>の中古車</h2>
+  <% else %>
+    <h2 class="car-search-area-title"><%= @body_type.name %>の中古車</h2>
+  <% end %>
+  <div class="car-search-area">
+  </div>
+  <h2 class="car-search-list-title">全<%= @cars.count %>件</h2>
+  <div class="car-search-list">
+  </div>
+  <div class="car-area">
+    <% @cars.each do |c| %>
+      <div class="car-contents">
+        <div class="car-contents-image">
+          <%= image_tag "http://catalogphoto.goo-net.com/cgi-bin/search/disp_pic2.cgi?10252021_201501.jpg" %>
+        </div>
+        <div class="car-contents-info">
+          <div class="car-contents-info-top">
+            <div class="car-contents-info-name">
+              <p><%= c.maker.name %></p>
+              <p class="car-contents-info-car-name"><%= c.car_name %></p>
+            </div>
+            <ul>
+              <li>
+                <p>修理歴</p>
+                <p><%= c.repaired %></p>
+              </li>
+              <li>
+                <p>排気量</p>
+                <p><%= c.displacement %>cc</p>
+              </li>
+              <li>
+                <p>走行距離</p>
+                <p><%= c.mileage %>万km</p>
+              </li>
+              <li>
+                <p>年式</p>
+                <p><%= c.model_year %></p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="car-contents-info-bottom">
+            <ul>
+              <li>
+                <p>本体価格</p>
+                <p class="car-contents-info-price"><%= c.base_price %>万円</p>
+              </li>
+              <li>
+                <p>支払い総額</p>
+                <p class="car-contents-info-price right"><%= c.total_price %>万円</p>
+              </li>
+            </ul>
+            <div class="car-contents-info-botton">
+              <%= link_to "在庫確認・見積依頼(無料)", c.url %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
