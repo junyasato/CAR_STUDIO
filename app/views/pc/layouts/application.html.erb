@@ -11,7 +11,7 @@
   <body>
     <header>
       <div class="header-wrapp">
-        <h1><%= link_to "CAR STUDIO", categories_path %></h1>
+        <h1><%= link_to "CAR STUDIO", category_path(1) %></h1>
         <nav>
           <% if user_signed_in? %>
   <!--             Logged in as <strong><%= current_user.email %></strong>. -->
@@ -27,8 +27,8 @@
     </header>
     <div class="category-list">
       <ul>
-        <% @category.each do |c| %>
-          <li><%= c.name %></li>
+        <% @category.each.with_index(1) do |c, n| %>
+          <li><%= link_to c.name, category_path(n) %></li>
         <% end %>
       </ul>
     </div>

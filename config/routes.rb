@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+
   devise_for :users
-   root 'categories#index'
+   root 'categories#show'
 
    get  '/articles/add_text'   => 'articles#add_text'
    get  '/articles/add_header' => 'articles#add_header'
@@ -13,5 +14,6 @@ Rails.application.routes.draw do
    resources :articles
    resources :categories
    resources :items
+   resources :cars
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

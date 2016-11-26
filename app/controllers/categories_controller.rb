@@ -3,6 +3,9 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    params[:id].present? ? @categorys = Category.find(params[:id]) : @categorys = Category.find(1)
+    @maker = @categorys.makers
+    @body_type = @categorys.body_types
   end
 
   def new

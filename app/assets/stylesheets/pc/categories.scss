@@ -4,14 +4,8 @@
 
 p {
   margin: 0;
-  color: #666;
+  // color: #666;
   font-weight: bold;
-}
-
-.category-wrapp{
-  width: 960px;
-  height: auto;
-  margin: 0 auto;
 }
 
 .search-label{
@@ -52,10 +46,33 @@ p {
       width: 50%;
       height: 100%;
       padding: 20px;
+      ul{
+        padding: 0;
+        overflow: hidden;
+        li{
+          display: table-cell;
+          width: 20%;
+          float: left;
+          height: 90px;
+          text-align: center;
+        }
+      }
     }
   }
   .search-bottom-area{
     height: 346px;
     padding: 20px;
+    ul{
+      padding: 0;
+      overflow: hidden;
+      li{
+        font-size: 13px;
+        width: 16%;
+        float: left;
+        height: 90px;
+        text-align: center;
+        list-style-type: none;
+      }
+    }
   }
 }

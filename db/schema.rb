@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114102732) do
+ActiveRecord::Schema.define(version: 20161126050538) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "category_id"
@@ -23,6 +23,35 @@ ActiveRecord::Schema.define(version: 20161114102732) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "body_type_cars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "car_id"
+    t.integer  "body_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "body_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.decimal  "base_price",                       precision: 10
+    t.decimal  "total_price",                      precision: 10
+    t.integer  "model_year"
+    t.decimal  "mileage",                          precision: 10
+    t.decimal  "displacement",                     precision: 10
+    t.datetime "vehicle_inspection"
+    t.integer  "repaired"
+    t.text     "url",                limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "maker_id"
+    t.string   "car_name"
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -39,6 +68,13 @@ ActiveRecord::Schema.define(version: 20161114102732) do
     t.text     "desc",       limit: 65535
     t.string   "image"
     t.text     "link_url",   limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "makers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

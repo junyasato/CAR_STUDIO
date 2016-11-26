@@ -29,7 +29,7 @@ header{
   height: 70px;
   margin: 0 auto;
   .header-wrapp{
-    width: 960px;
+    width: 900px;
     margin: 0 auto;
     h1{
       float: left;
@@ -50,6 +50,12 @@ header{
   }
 }
 
+.wrapp{
+  width: 900px;
+  height: auto;
+  margin: 0 auto;
+}
+
 .category-list{
   background: orenge;
   font-size: 0;
@@ -57,8 +63,7 @@ header{
   background: #FF8C00;
   margin: 0;
   ul{
-    width: 960px;
-    margin: 0 auto;
+    width: 900px;
     margin: 0 auto;
     padding: 0;
     display: table;
@@ -70,14 +75,19 @@ header{
     width: auto;
     font-weight: bold;
     text-align: center;
-    color: #fff;
     border-right: 1px solid #fff;
+    a{
+      color: #fff;
+    }
     &:first-child{
       border-left: 1px solid #fff;
     }
     &:hover{
       background: #fff;
       color: #FF8C00;
+      a{
+        color: #FF8C00;
+      }
     }
   }
 }
