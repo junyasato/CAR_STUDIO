@@ -3,8 +3,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @search = Car.ransack(params[:q])
+
     params[:id].present? ? @categorys = Category.find(params[:id]) : @categorys = Category.find(1)
-    @maker = @categorys.makers
+    @maker = @categorys.makers.limit(20)
     @body_type = @categorys.body_types
   end
 

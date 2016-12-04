@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126050538) do
+ActiveRecord::Schema.define(version: 20161129122053) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "category_id"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 20161126050538) do
     t.datetime "updated_at"
     t.integer  "maker_id"
     t.string   "car_name"
+    t.string   "name"
+    t.text     "desc",               limit: 65535
+    t.string   "image"
+    t.string   "item_order"
+    t.integer  "status"
+    t.integer  "user_id"
+    t.string   "region"
+    t.string   "district"
+    t.string   "store_name"
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -61,8 +70,29 @@ ActiveRecord::Schema.define(version: 20161126050538) do
     t.datetime "updated_at"
   end
 
+  create_table "conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "model_year"
+    t.integer  "one_owner"
+    t.decimal  "mileage",                         precision: 10
+    t.integer  "camper"
+    t.integer  "repaired"
+    t.integer  "welfare"
+    t.integer  "periodic_Inspection_record_book"
+    t.integer  "new_property"
+    t.integer  "non_smoking"
+    t.integer  "regular_imported"
+    t.string   "recycling_fee"
+    t.integer  "registered_unused"
+    t.integer  "eco_car"
+    t.string   "inspection"
+    t.string   "statutory_maintenance"
+    t.string   "security"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "article_id"
     t.integer  "item_type"
     t.string   "title"
     t.text     "desc",       limit: 65535
@@ -70,11 +100,29 @@ ActiveRecord::Schema.define(version: 20161126050538) do
     t.text     "link_url",   limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "car_id"
   end
 
   create_table "makers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+  end
+
+  create_table "specs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "body_type"
+    t.string   "drive_system"
+    t.string   "color"
+    t.string   "handle"
+    t.integer  "last_number"
+    t.string   "mission"
+    t.integer  "displacement"
+    t.integer  "passenger_capacity"
+    t.string   "engine_type"
+    t.integer  "door"
+    t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

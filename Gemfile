@@ -72,3 +72,11 @@ gem 'rmagick'
 
 ### ファイルのajax通信
 gem 'remotipart', '~> 1.2', github: 'pedantix/remotipart', ref: '7f7989db572976816c03508c335bbc1d8230af78'
+
+### 検索
+gem 'rails-i18n' # この行を追加(ransackには関係ないけどdate_select用)
+gem 'ransack', github: 'activerecord-hackery/ransack'
+
+###ページネーション
+gem 'kaminari'
+gem 'will_paginate', github: 'jonatack/will_paginate'

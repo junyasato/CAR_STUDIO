@@ -10,15 +10,15 @@ class ItemsController < ApplicationController
 
   def create
     @new_items = Item.create(item_params)
-    @articles = Article.find_by_id(item_params[:article_id])
-    @articles.item_order << "," + @new_items.id.to_s
-    @articles.save
-    if @articles.item_order.present?
-      item_order = @articles.item_order.split(",")
+    @cars = Car.find_by_id(item_params[:car_id])
+    @cars.item_order << "," + @new_items.id.to_s if @cars.item_order
+    @cars.save
+    if @cars.item_order.present?
+      item_order = @cars.item_order.split(",")
     else
-      item_order = @articles.item_order = @new_items.id.to_s
+      item_order = @cars.item_order = @new_items.id.to_s
     end
-    @items = @articles.items.where(id: item_order).order(['field(id, ?)', item_order])
+    @items = @cars.items.where(id: item_order).order(['field(id, ?)', item_order])
   end
 
   def edit
@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
     params[:item].permit(
       :desc,
       :item_type,
-      :article_id,
+      :car_id,
       :title,
       :link_url,
       :image,
