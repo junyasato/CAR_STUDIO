@@ -80,3 +80,6 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 ###ページネーション
 gem 'kaminari'
 gem 'will_paginate', github: 'jonatack/will_paginate'
+
+### スクレイピング
+gem 'mechanize'

@@ -280,6 +280,12 @@ blockquote:before{
       padding: 0;
       overflow: hidden;
       width: 100%;
+      .multiple-select{
+        width: 37%;
+      }
+      .repaired-select{
+        width: 20%;
+      }
       li{
         margin-bottom: 10px;
         float: left;
@@ -532,3 +538,11 @@ blockquote:before{
   }
 }
 
+.custom-select{
+  border-radius: 1px !important;
+  height: 35px !important;
+  line-height: 20px;
+}
+
+#q_base_price_lteq {
+}

@@ -7,6 +7,7 @@
   <div class="car-search-area">
     <div class="car-search-select-area">
       <% num = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000] %>
+      <% year = [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017] %>
       <%= search_form_for @search do |f| %>
         <ul>
           <li>
@@ -21,13 +22,25 @@
             <%= f.label :district, '市町村区' %>
             <%= f.select :district_cont, Car.pluck(:district).uniq, {:selected=>f.object.district_cont, :include_blank=>"市町村区を選択"}, class: "custom-select" %>
           </li>
-          <li>
+          <li class="multiple-select">
             <%= f.label :base_price, '価格帯' %>
             <%= f.select :base_price_gteq, num, {:selected=>f.object.base_price_gteq.to_i, :include_blank=>"下限なし"}, class: "custom-select" if f.object.base_price_gteq %>
             <%= f.select :base_price_gteq, num, {:include_blank=>"下限なし"}, class: "custom-select" if f.object.base_price_gteq == nil %> 〜
 
             <%= f.select :base_price_lteq, num, {:selected=>f.object.base_price_lteq.to_i, :include_blank=>"上限なし"}, class: "custom-select" if f.object.base_price_lteq %>
             <%= f.select :base_price_lteq, num, {:include_blank=>"上限なし"}, class: "custom-select" if f.object.base_price_lteq == nil %>
+          </li>
+          <li class="multiple-select">
+            <%= f.label :model_year, '年式' %>
+            <%= f.select :model_year_gteq, year, {:selected=>f.object.model_year_gteq.to_i, :include_blank=>"下限なし"}, class: "custom-select" if f.object.model_year_gteq %>
+            <%= f.select :model_year_gteq, year, {:include_blank=>"下限なし"}, class: "custom-select" if f.object.model_year_gteq == nil %> 〜
+
+            <%= f.select :model_year_lteq, year, {:selected=>f.object.model_year_lteq.to_i, :include_blank=>"上限なし"}, class: "custom-select" if f.object.model_year_lteq %>
+            <%= f.select :model_year_lteq, year, {:include_blank=>"上限なし"}, class: "custom-select" if f.object.model_year_lteq == nil %>
+          </li>
+          <li class="repaired-select">
+            <%= f.label :repaired, '修理歴' %>
+            <%= f.select :repaired_cont, ["なし", "あり"], {:selected=>f.object.repaired_cont, :include_blank=>"選択なし"}, class: "custom-select" %>
           </li>
         </ul>
     </div>

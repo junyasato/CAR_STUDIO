@@ -14,5 +14,6 @@
 //= require bootstrap-sprockets
 //= require jquery.remotipart
 //= require jquery_ujs
+//= require pc/slick.min.js
 //= require turbolinks
 //= require_tree ../pc
