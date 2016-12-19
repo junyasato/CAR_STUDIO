@@ -434,11 +434,32 @@ blockquote:before{
     }
     .car-top-area-info{
       overflow: hidden;
-      img{
+      .content{
+        width: 60% !important;
         float: left;
-        width: 60%;
+        position :relative;
+        .slick-next{
+          background: none;
+          border: none;
+          color: #fff;
+          position :absolute;
+          top: 47%;
+          right: 5px;
+        }
+        .slick-prev{
+          background: none;
+          border: none;
+          color: #fff;
+          position :absolute;
+          top: 47%;
+          left: 5px;
+          z-index: 3;
+        }
+      }
+      img{
         height: 350px;
         margin-right: 10px;
+        width: 100%;
       }
       .car-top-area-info-right{
         p{
@@ -495,12 +516,12 @@ blockquote:before{
   }
   .car-main-area{
     width: 100%;
-    height: 1000px;
+    height: auto;
     overflow: hidden;
     border-top: 2px solid #ddd;
     .car-main-area-contents{
       float: left;
-      width: 73%;
+      width: 100%;
       height: 100%;
       h2{
         font-size: 20px;
@@ -515,8 +536,8 @@ blockquote:before{
           th{
             font-size: 12px;
             background: #f2f2f2;
-            width: 200px;
-            text-align: right;
+            width: 250px;
+            text-align: left;
             padding: 15px 20px;
             border-bottom: 1px solid #eee;
           }
@@ -532,8 +553,26 @@ blockquote:before{
     }
     .car-main-area-info{
       float: left;
-      width: 27%;
+      width: 0%;
       height: 100%;
+    }
+    .car-equipment{
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+      li{
+        list-style-type: none;
+        float: left;
+        margin: 0 6px 6px 0;
+        border-left: 3px solid;
+        width: 24%;
+        color: #ff6010;
+        padding: 3px;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #faede1;
+
+      }
     }
   }
 }

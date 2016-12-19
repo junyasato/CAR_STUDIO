@@ -23,6 +23,7 @@ class CarsController < ApplicationController
 
   def show
     @items = @cars.items
+    @equipments = @cars.equipments
   end
 
   def new

@@ -53,6 +53,10 @@
         <%= f.label :displacement, "排気量" %>
         <%= f.text_field :displacement %>
       </li>
+      <li>
+        <%= f.label :vehicle_inspection, "車検" %>
+        <%= f.date_select :vehicle_inspection %>
+      </li>
     </ul>
     <%= f.submit "保存", class: "btn btn-set" %>
     <% end %>

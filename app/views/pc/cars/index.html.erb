@@ -11,10 +11,6 @@
       <%= search_form_for @search do |f| %>
         <ul>
           <li>
-            <%= f.label :car_name, '車種' %>
-            <%= f.select :car_name_cont, Car.pluck(:car_name).uniq, {:selected=>f.object.car_name_cont, :include_blank=>"車種を選択"}, class: "custom-select" %>
-          </li>
-          <li>
             <%= f.label :region, '地域' %>
             <%= f.select :region_cont, Car.pluck(:region).uniq, {:selected=>f.object.region_cont, :include_blank=>"地域を選択"}, class: "custom-select" %>
           </li>
@@ -54,8 +50,8 @@
   </div> -->
   <div class="car-area">
     <% @cars.each do |c| %>
-      <div class="car-contents">
-        <%= link_to car_path(c) do %>
+      <%= link_to car_path(c) do %>
+        <div class="car-contents">
           <div class="car-contents-image">
             <%= image_tag c.image %>
           </div>
@@ -63,7 +59,7 @@
             <div class="car-contents-info-top">
               <div class="car-contents-info-name">
                 <p><%= c.maker.name %></p>
-                <p class="car-contents-info-car-name"><%= c.car_name %></p>
+                <p class="car-contents-info-car-name"><%= c.name %></p>
               </div>
               <ul>
                 <li>
@@ -108,8 +104,8 @@
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

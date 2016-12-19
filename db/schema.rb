@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129122053) do
+ActiveRecord::Schema.define(version: 20161219152531) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "category_id"
@@ -39,6 +39,20 @@ ActiveRecord::Schema.define(version: 20161129122053) do
     t.datetime "updated_at"
   end
 
+  create_table "car_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "url",        limit: 65535
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "car_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "maker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "cars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.decimal  "base_price",                       precision: 10
     t.decimal  "total_price",                      precision: 10
@@ -51,7 +65,6 @@ ActiveRecord::Schema.define(version: 20161129122053) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "maker_id"
-    t.string   "car_name"
     t.string   "name"
     t.text     "desc",               limit: 65535
     t.string   "image"
@@ -71,22 +84,29 @@ ActiveRecord::Schema.define(version: 20161129122053) do
   end
 
   create_table "conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "model_year"
-    t.integer  "one_owner"
-    t.decimal  "mileage",                         precision: 10
-    t.integer  "camper"
-    t.integer  "repaired"
-    t.integer  "welfare"
-    t.integer  "periodic_Inspection_record_book"
-    t.integer  "new_property"
-    t.integer  "non_smoking"
-    t.integer  "regular_imported"
+    t.string   "model_year"
+    t.string   "one_owner"
+    t.string   "mileage"
+    t.string   "camper"
+    t.string   "repaired"
+    t.string   "welfare"
+    t.string   "periodic_Inspection_record_book"
+    t.string   "new_property"
+    t.string   "non_smoking"
+    t.string   "regular_imported"
     t.string   "recycling_fee"
-    t.integer  "registered_unused"
-    t.integer  "eco_car"
+    t.string   "registered_unused"
+    t.string   "eco_car"
     t.string   "inspection"
     t.string   "statutory_maintenance"
     t.string   "security"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "equipment", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
     t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -111,17 +131,34 @@ ActiveRecord::Schema.define(version: 20161129122053) do
     t.string   "country"
   end
 
+  create_table "new_car_specs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "release_date"
+    t.string   "wheelbase"
+    t.string   "body_dimension"
+    t.string   "used_fuel"
+    t.string   "seat_num"
+    t.string   "vehicle_weight"
+    t.string   "indoor"
+    t.string   "drive_system"
+    t.string   "fuel_jc08"
+    t.string   "turning_radius"
+    t.string   "fuel_1015"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "specs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "body_type"
     t.string   "drive_system"
     t.string   "color"
     t.string   "handle"
-    t.integer  "last_number"
+    t.string   "last_number"
     t.string   "mission"
-    t.integer  "displacement"
-    t.integer  "passenger_capacity"
+    t.string   "displacement"
+    t.string   "passenger_capacity"
     t.string   "engine_type"
-    t.integer  "door"
+    t.string   "door"
     t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
