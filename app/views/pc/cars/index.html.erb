@@ -11,6 +11,11 @@
       <%= search_form_for @search do |f| %>
         <ul>
           <li>
+            <%= f.label :region, '車種' %>
+              <%= f.select :car_type_name_cont, CarType.all.map { |c| c.name }, {:selected=>f.object.car_type_name_cont, :include_blank=>"車種を選択"}, class: "custom-select" %>
+          </li>
+
+          <li>
             <%= f.label :region, '地域' %>
             <%= f.select :region_cont, Car.pluck(:region).uniq, {:selected=>f.object.region_cont, :include_blank=>"地域を選択"}, class: "custom-select" %>
           </li>

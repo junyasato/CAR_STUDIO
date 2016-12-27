@@ -8,7 +8,7 @@
         <p>条件から検索</p>
         <% num = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000] %>
         <%= search_form_for @search do |f| %>
-          <%= f.select :car_name_cont, Car.pluck(:car_name).uniq, {:selected=>f.object.car_name_cont, :include_blank=>"車種を選択"}, class: "custom-select" %><br>
+          <%= f.select :car_types_name_cont, CarType.pluck(:name).uniq, {:selected=>"", :include_blank=>"車種を選択"}, class: "custom-select" %><br>
 
         <%= f.select :region_cont, Car.pluck(:region).uniq, {:selected=>f.object.region_cont, :include_blank=>"地域を選択"}, class: "custom-select" %><br>
 
@@ -22,7 +22,7 @@
         <p>フリーワードで検索</p>
         <%= search_form_for @search do |f| %>
           <div class="input-group">
-            <%= f.text_field :car_name_cont, class: "form-control", placeholder: "例 トヨタ プリウス" %>
+            <%= f.text_field :car_type_name_cont, class: "form-control", placeholder: "例 トヨタ プリウス" %>
             <span class="input-group-btn">
               <%= f.submit '検索', class: "btn btn-default" %>
             </span>
