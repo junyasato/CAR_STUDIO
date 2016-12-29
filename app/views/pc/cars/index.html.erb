@@ -12,12 +12,21 @@
         <ul>
           <li>
             <%= f.label :region, '車種' %>
-              <%= f.select :car_type_name_cont, CarType.all.map { |c| c.name }, {:selected=>f.object.car_type_name_cont, :include_blank=>"車種を選択"}, class: "custom-select" %>
+            <%= f.select :car_type_name_cont,
+              CarType.all.map { |c| c.name },
+              {:selected=>f.object.car_type_name_cont,
+                :include_blank=>"車種を選択"
+              },
+              class: "custom-select"
+            %>
           </li>
-
           <li>
             <%= f.label :region, '地域' %>
-            <%= f.select :region_cont, Car.pluck(:region).uniq, {:selected=>f.object.region_cont, :include_blank=>"地域を選択"}, class: "custom-select" %>
+            <%= f.select :region_cont,
+              Car.pluck(:region).uniq,
+              {:selected=>f.object.region_cont, :include_blank=>"地域を選択"},
+              class: "custom-select"
+            %>
           </li>
           <li>
             <%= f.label :district, '市町村区' %>
@@ -50,15 +59,15 @@
     </div>
     <% end %>
   </div>
-<!--   <h2 class="car-search-list-title">全<%= @cars.count %>件</h2>
-  <div class="car-search-list">
-  </div> -->
+  <!--   <h2 class="car-search-list-title">全<%= @cars.count %>件</h2>
+    <div class="car-search-list">
+    </div> -->
   <div class="car-area">
     <% @cars.each do |c| %>
       <%= link_to car_path(c) do %>
         <div class="car-contents">
           <div class="car-contents-image">
-            <%= image_tag c.image %>
+            <%= image_tag c.car_images.first.url if c.car_images.first %>
           </div>
           <div class="car-contents-info">
             <div class="car-contents-info-top">
@@ -73,7 +82,7 @@
                 </li>
                 <li>
                   <p>車検</p>
-                  <p><%= c.vehicle_inspection.strftime('%Y年%m月%d日')%></p>
+                  <p><%= c.vehicle_inspection%></p>
                 </li>
                 <li>
                   <p>排気量</p>

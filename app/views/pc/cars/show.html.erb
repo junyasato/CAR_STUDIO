@@ -4,8 +4,9 @@
     <div class="car-top-area-info">
       <div class="content">
         <div class="slider single-item">
-          <div><%= image_tag @cars.image %></div>
-          <div><img src="http://pic.prepics-cdn.com/stylish087/24433021.jpeg"/></div>
+          <% @cars.car_images.each do |c| %>
+            <div><img src="<%= c.url %>"/></div>
+          <% end %>
         </div>
       </div>
       <div class="car-top-area-info-right">
@@ -179,6 +180,24 @@
           <li><%= e.name %></li>
         <% end %>
       </ul>
+
+      <div class="car-show-items">
+        <% @items.each do |i| %>
+          <% case i.item_type %>
+            <% when "text" %>
+              <%= simple_format(h(i.desc)) %>
+            <% when "header" %>
+              <h2><%= i.desc %></h2>
+            <% when "quote" %>
+              <blockquote><%= simple_format(h(i.desc)) %></blockquote>
+            <% when "button" %>
+              <%= link_to "#{i.desc}", i.link_url, :class => "item-button" %>
+            <% when "image" %>
+              <%= image_tag i.image, :class => "item-image" %>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
     <div class="car-main-area-info">
     </div>

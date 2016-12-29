@@ -10,7 +10,6 @@
 <div class="cms-wrapp">
   <div class="cms-article-info">
     <div class="cms-article-image">
-      <%= image_tag @cars.image if @cars.image.present? %>
       <div class="mask">
         <div class="caption"><a data-toggle="modal" data-target="#post-tags-modal">画像を追加する</a></div>
       </div>
@@ -18,16 +17,28 @@
     <div class="cms-article-text">
       <%= form_for @cars do |f| %>
         <%= f.text_field :name, class: "form-title", placeholder: "名前" %>
-        <%= f.text_area :desc, class: "form-desc", :size => "10x4", placeholder: "説明文"  %>
+        <%= f.text_area :desc,
+          class: "form-desc",
+          :size => "10x4",
+          placeholder: "説明文"
+        %>
     </div>
     <ul>
       <li>
-        <%= f.label :car_name, '車種' %>
-        <%= f.select :car_name, Car.pluck(:car_name).uniq, {:selected=>f.object.car_name}, class: "custom-select" %>
+        <%= f.label :maker_id, 'メーカー' %>
+        <%= f.select :maker_id,
+          Maker.all.map {|maker| [maker.name, maker.id]},
+          {:selected=>f.object.maker_id},
+          class: "custom-select"
+        %>
       </li>
       <li>
-        <%= f.label :maker_id, '車種' %>
-        <%= f.select :maker_id, Maker.all.map {|maker| [maker.name, maker.id]}, {:selected=>f.object.maker_id}, class: "custom-select" %>
+        <%= f.label :car_name, '車種' %>
+        <%= f.select :car_type_id,
+          CarType.all.map {|car| [car.name, car.id]},
+          {:selected=>f.object.car_type_id},
+          class: "custom-select"
+        %>
       </li>
       <li>
         <%= f.label :url, "見積もりURL" %>
@@ -55,7 +66,7 @@
       </li>
       <li>
         <%= f.label :vehicle_inspection, "車検" %>
-        <%= f.date_select :vehicle_inspection %>
+        <%= f.text_field :vehicle_inspection %>
       </li>
     </ul>
     <%= f.submit "保存", class: "btn btn-set" %>
@@ -101,8 +112,6 @@
       </div>
       <div class="modal-body">
         <%= form_for @cars do |lf| %>
-          <%= lf.file_field :image %><br><br>
-          <%= lf.text_field :remote_image_url, class: "form-control", placeholder: "URL" %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn btn-secondary" data-dismiss="modal">閉じる</button>

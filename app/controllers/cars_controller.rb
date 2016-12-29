@@ -23,12 +23,16 @@ class CarsController < ApplicationController
 
   def show
     @items = @cars.items
+    if @items.present?
+      item_order = @cars.item_order.split(",") if @cars.item_order
+      @items = @cars.items.where(id: item_order).order(['field(id, ?)', item_order])
+    end
     @equipments = @cars.equipments
   end
 
   def new
     # todo: 本来user_idは自動設定されるはずだが、されないので修正したい
-    @cars = Car.create(user_id: current_user.id, maker_id: 1)
+    @cars = Car.create(user_id: current_user.id, maker_id: 1, car_type_id: 1)
     redirect_to edit_car_path(@cars)
   end
 
@@ -102,7 +106,8 @@ class CarsController < ApplicationController
       :remote_image_url,
       :district,
       :region,
-      :store_name
+      :store_name,
+      :car_type_id
     )
   end
 end

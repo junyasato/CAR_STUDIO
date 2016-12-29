@@ -10,6 +10,5 @@ class Car < ApplicationRecord
   has_many :new_car_specs
   has_many :conditions
   has_many :body_types, through: :body_type_cars
-  mount_uploader :image, ThumbnailUploader
-  enum repaired: { "なし": 0 ,"あり": 1}
+  # mount_uploader :image, ThumbnailUploader
 end

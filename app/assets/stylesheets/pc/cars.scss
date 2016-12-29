@@ -349,15 +349,16 @@ blockquote:before{
       padding-top: 30px;
       p{
         margin: 0;
+        font-size: 14px;
         color: #696969;
       }
       .car-contents-info-top{
         overflow: hidden;
         .car-contents-info-name{
           float: left;
-          width: 30%;
+          width: 38%;
           .car-contents-info-car-name{
-            font-size: 25px;
+            font-size: 18px;
           }
         }
         ul{
@@ -365,11 +366,11 @@ blockquote:before{
           padding: 0;
           margin: 0;
           float: right;
-          width: 70%;
+          width: 62%;
           li{
             text-align: center;
             float: right;
-            width: 80px;
+            width: 75px;
             list-style-type: none;
           }
         }
@@ -550,6 +551,44 @@ blockquote:before{
           }
         }
       }
+      .car-show-items{
+        p{
+          margin: 0 0 15px 0;
+        }
+        h2{
+          border-bottom: 2px solid;
+          padding-bottom: 5px;
+          font-size: 23px;
+          font-weight: bold;
+          margin: 0 0 15px 0;
+        }
+        blockquote{
+          margin: 0 0 15px 0;
+          p{
+            margin: 0;
+          }
+        }
+        .item-button{
+          background: -moz-linear-gradient(top, #FFF 0%, #EEE);
+          background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
+          border: 1px solid #DDD;
+          color: #111;
+          padding: 15px 90px;
+          width: 300px;
+          text-align: center;
+          display: block;
+          margin-bottom: 15px;
+          &:hover{
+            background: #f3f3f3!important;
+            text-decoration:none;
+          }
+        }
+        img{
+          margin: 0 0 15px 0;
+          width: 100%;
+          max-height: 500px;
+        }
+      }
     }
     .car-main-area-info{
       float: left;
@@ -559,7 +598,7 @@ blockquote:before{
     .car-equipment{
       overflow: hidden;
       padding: 0;
-      margin: 0;
+      margin: 0 0 50px 0;
       li{
         list-style-type: none;
         float: left;
